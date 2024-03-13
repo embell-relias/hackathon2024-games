@@ -10,22 +10,33 @@
 
 		<p>This page will let you test the games created by [TBD] for the 2024 Relias Hackathon.</p>
 
-		<iframe allowtransparency="true" 
-			id="game-embed" 
-			scrolling="no" 
-			src="CoinCollector/index.html"
-			width ="720"
-			height ="720"
-			allow="autoplay; fullscreen *; midi; cross-origin-isolated" allowfullscreen="true" frameborder="0"></iframe>
+		<nav>
+			<ul>
+				<li><a href="#coin" id="coin">Coin Collector</a></li>
+				<li><a href="#slide" id="slide">Roll for Gold</a></li>
+			</ul>
+		</nav>
 
-		<iframe allowtransparency="true" 
-			id="game-embed" 
+		<iframe id="game-embed" class="hidden"
+			allowtransparency="true"
 			scrolling="no" 
-			src="SlidePuzzler/index.html"
 			width ="720"
 			height ="720"
 			allow="autoplay; fullscreen *; midi; cross-origin-isolated" allowfullscreen="true" frameborder="0"></iframe>
 	</div>
+
+	<script>
+		document.getElementById("coin").addEventListener("click", () => {
+			var element = document.getElementById("game-embed");
+			element.src = `CoinCollector/index.html`;
+			element.classList.remove('hidden');
+		});
+		document.getElementById("slide").addEventListener("click", () => {
+			var element = document.getElementById("game-embed");
+			element.src = `SlidePuzzler/index.html`;
+			element.classList.remove('hidden');
+		});
+	</script>
 </body>
 </html>
 

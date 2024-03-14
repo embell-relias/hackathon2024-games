@@ -12,35 +12,77 @@
 
 		<nav>
 			<ul>
-				<li><a href="#jump" id="jump">One Jump Man</a></li>
-				<li><a href="#slide" id="slide">Roll for Gold</a></li>
-				<li><a href="#coin" id="coin">Coin Collector</a></li>
+				<li><a href="#" id="jump">One Jump Man</a></li>
+				<li><a href="#" id="slide">Roll for Gold</a></li>
+				<li><a href="#" id="coin">Coin Collector</a></li>
 			</ul>
 		</nav>
 
-		<iframe id="game-embed" class="hidden"
-			allowtransparency="true"
-			scrolling="no" 
-			width ="720"
-			height ="720"
-			allow="autoplay; fullscreen *; midi; cross-origin-isolated" allowfullscreen="true" frameborder="0"></iframe>
+		<div class="colLayout">
+			<iframe id="game-embed" class="hidden"
+				allowtransparency="true"
+				scrolling="no" 
+				width ="720"
+				height ="720"
+				allow="autoplay; fullscreen *; midi; cross-origin-isolated" allowfullscreen="true" frameborder="0"></iframe>
+
+			<div class="instructions">
+				<div class="hidden desc" id="jumpDesc">
+					<h2>Tips:</h2>
+					<ul>
+						<li>Arrow keys or A and D to move</li>
+						<li>Space to jump</li>
+						<li>Shift to sprint</li>
+						<li>Each coin you get gives you one jump. Use it wisely!</li>
+						<li>You can only store a maximum of 3 jump charges</li>
+						<li>Press enter to select the highlighted button</li>
+						<li>Press R to retry</li>
+					</ul>
+				</div>
+				<div class="hidden desc" id="slideDesc">
+					<h2>Tips:</h2>
+					<ul>
+						<li>Arrow keys or A and D to move</li>
+						<li>Press enter to select the highlighted button</li>
+						<li>Esc to open menu</li>
+						<li>Press R to retry</li>
+					</ul>
+				</div>
+				<div class="hidden desc" id="coinDesc">
+					<h2>Tips:</h2>
+					<ul>
+						<li>Arrow keys or A and D to move</li>
+						<li>Shift to sprint</li>
+						<li>Space to jump</li>
+						<li>You need every coin to finish the level</li>
+						<li>Press enter to go to the next level</li>
+						<li>Press R to retry</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script>
-		document.getElementById("jump").addEventListener("click", () => {
+		function showGame(path, descId) {
 			var element = document.getElementById("game-embed");
-			element.src = `OneJumpMan/index.html`;
+			element.src = `${path}/index.html`;
 			element.classList.remove('hidden');
+
+			document.querySelectorAll('.desc').forEach((descText) => {
+				descText.classList.add('hidden');
+			});
+			document.getElementById(descId).classList.remove('hidden');
+		}
+
+		document.getElementById("jump").addEventListener("click", () => {
+			showGame("OneJumpMan", "jumpDesc");
 		});
 		document.getElementById("slide").addEventListener("click", () => {
-			var element = document.getElementById("game-embed");
-			element.src = `slidePuzzler/index.html`;
-			element.classList.remove('hidden');
+			showGame("slidePuzzler", "slideDesc");
 		});
 		document.getElementById("coin").addEventListener("click", () => {
-			var element = document.getElementById("game-embed");
-			element.src = `CoinCollector/index.html`;
-			element.classList.remove('hidden');
+			showGame("CoinCollector", "coinDesc");
 		});
 	</script>
 </body>

@@ -2,17 +2,18 @@ body {
 	background: #F2F2F2;
 	color: #303030;
 	font-family: sans-serif;
+	line-height: 1.5;
 }
 
 .container {
-	max-width: 800px;
+	max-width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 2rem;
+	padding-top: 0;
 }
 
 p {
-	line-height: 1.5;
 	font-size: 20px;
 }
 
@@ -48,4 +49,22 @@ nav ul li a {
 
 nav ul li a:hover {
 	background-color: #555;
+}
+
+.colLayout {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#game-embed {
+	width: 720px;
+	min-width: 720px;
+}
+
+.instructions {
+	min-width: 200px;
+	flex: 1;
+	padding-top: 1rem;
+	padding-left: 2rem;
 }

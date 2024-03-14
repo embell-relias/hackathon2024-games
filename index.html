@@ -12,8 +12,9 @@
 
 		<nav>
 			<ul>
-				<li><a href="#coin" id="coin">Coin Collector</a></li>
+				<li><a href="#jump" id="jump">One Jump Man</a></li>
 				<li><a href="#slide" id="slide">Roll for Gold</a></li>
+				<li><a href="#coin" id="coin">Coin Collector</a></li>
 			</ul>
 		</nav>
 
@@ -26,14 +27,19 @@
 	</div>
 
 	<script>
-		document.getElementById("coin").addEventListener("click", () => {
+		document.getElementById("jump").addEventListener("click", () => {
 			var element = document.getElementById("game-embed");
-			element.src = `CoinCollector/index.html`;
+			element.src = `oneJumpMan/index.html`;
 			element.classList.remove('hidden');
 		});
 		document.getElementById("slide").addEventListener("click", () => {
 			var element = document.getElementById("game-embed");
 			element.src = `SlidePuzzler/index.html`;
+			element.classList.remove('hidden');
+		});
+		document.getElementById("coin").addEventListener("click", () => {
+			var element = document.getElementById("game-embed");
+			element.src = `CoinCollector/index.html`;
 			element.classList.remove('hidden');
 		});
 	</script>

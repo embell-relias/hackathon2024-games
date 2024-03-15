@@ -10,25 +10,36 @@
 
 		<p>This page will let you test the games created by team Video Gamification for the 2024 Relias Hackathon.</p>
 
-		<nav>
-			<ul>
-				<li><a href="#" id="jump">One Jump Man</a></li>
-				<li><a href="#" id="slide">Roll for Gold</a></li>
-				<li><a href="#" id="coin">Coin Collector</a></li>
-			</ul>
-		</nav>
-
 		<div class="colLayout">
-			<iframe id="game-embed" class="hidden"
-				allowtransparency="true"
-				scrolling="no" 
-				width ="720"
-				height ="720"
-				allow="autoplay; fullscreen *; midi; cross-origin-isolated" allowfullscreen="true" frameborder="0"></iframe>
+			<div class="leftCol">
+				<nav>
+					<ul>
+						<li><a href="#" id="jump">One Jump Man</a></li>
+						<li><a href="#" id="slide">Roll for Gold</a></li>
+						<li><a href="#" id="coin">Coin Collector</a></li>
+					</ul>
+				</nav>
+			</div>
 
-			<div class="instructions">
+			<div class="midCol">
+				<iframe id="game-embed" class="hidden"
+					allowtransparency="true"
+					scrolling="no" 
+					width ="704"
+					height ="704"
+					allow="autoplay; fullscreen *; midi; cross-origin-isolated" 
+					allowfullscreen="true" 
+					frameborder="0"></iframe>
+			</div>
+
+
+			<div class="rightCol">
+				<div class="desc">
+					<h3>Choose a game to get started</h2>
+				</div>
 				<div class="hidden desc" id="jumpDesc">
-					<h2>Tips:</h2>
+					<h2>Tips</h2>
+					<hr>
 					<ul>
 						<li>Arrow keys or A and D to move</li>
 						<li>Space to jump</li>
@@ -40,7 +51,8 @@
 					</ul>
 				</div>
 				<div class="hidden desc" id="slideDesc">
-					<h2>Tips:</h2>
+					<h2>Tips</h2>
+					<hr>
 					<ul>
 						<li>Arrow keys or A and D to move</li>
 						<li>Press enter to select the highlighted button</li>
@@ -49,7 +61,8 @@
 					</ul>
 				</div>
 				<div class="hidden desc" id="coinDesc">
-					<h2>Tips:</h2>
+					<h2>Tips</h2>
+					<hr>
 					<ul>
 						<li>Arrow keys or A and D to move</li>
 						<li>Shift to sprint</li>
@@ -64,7 +77,7 @@
 	</div>
 
 	<script>
-		function showGame(path, descId) {
+		function showGame(path, descId, size) {
 			var element = document.getElementById("game-embed");
 			element.src = `${path}/index.html`;
 			element.classList.remove('hidden');
@@ -73,16 +86,18 @@
 				descText.classList.add('hidden');
 			});
 			document.getElementById(descId).classList.remove('hidden');
+			document.getElementById('game-embed').style.width= size + "px"
+			document.getElementById('game-embed').style.height= size + "px"
 		}
 
 		document.getElementById("jump").addEventListener("click", () => {
-			showGame("OneJumpMan", "jumpDesc");
+			showGame("OneJumpMan", "jumpDesc", 640);
 		});
 		document.getElementById("slide").addEventListener("click", () => {
-			showGame("slidePuzzler", "slideDesc");
+			showGame("slidePuzzler", "slideDesc", 704);
 		});
 		document.getElementById("coin").addEventListener("click", () => {
-			showGame("CoinCollector", "coinDesc");
+			showGame("CoinCollector", "coinDesc", 640);
 		});
 	</script>
 </body>
